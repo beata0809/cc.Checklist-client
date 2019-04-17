@@ -14,7 +14,8 @@ class UserBar{
                         <a href="#"><h5 class="text-white"> Zmień hasło </h5></a>
                     </div> 
                 </div> 
-                <nav class="navbar navbar-light float-right text-right pr-3>
+                <nav class="navbar navbar-light float-right text-right pr-3
+                style="background-color: rgb(100, 0, 0);">
                     <i class="fas fa-user-circle"></i>
                     <h4>User</h4>
                     <button class="navbar-toggler"

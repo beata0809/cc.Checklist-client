@@ -7,11 +7,12 @@ class UserBar{
     render(){
         document.querySelector('#root').appendChild(this.element);
         this.element.innerHTML = `
+        <div class="navbar-div">
             <div class="pos-f-t">
                 <div class="collapse" id="navbarToggleExternalContent">
                     <div class="bg-dark p-4 text-right">
-                        <a href="#"><h5 class="text-white"> Wyloguj </h5></a> 
-                        <a href="#"><h5 class="text-white"> Zmień hasło </h5></a>
+                        <a href="#"><h6 class="text-white"> Wyloguj </h6></a> 
+                        <a href="#"><h6 class="text-white"> Zmień hasło </h6></a>
                     </div> 
                 </div> 
                 <nav class="navbar navbar-light float-right text-right pr-3
@@ -29,6 +30,7 @@ class UserBar{
                     </button> 
                 </nav> 
             </div>
+        </div>
         `
     }
 }

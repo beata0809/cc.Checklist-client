@@ -3,7 +3,7 @@ import "@babel/polyfill";
 import "bootstrap";
 import Api from './Api/Api';
 import UserBar from './UserBar';
-import SideBar from './SideBar'
+import SideBar from './SideBar/SideBar'
 
 const userBar = new UserBar('UserBar');
 const sideBar = new SideBar('SideBar');

@@ -10,7 +10,7 @@ class UserBar{
         <div class="navbar-div">
             <div class="pos-f-t">
                 <div class="collapse" id="navbarToggleExternalContent">
-                    <div class="bg-dark p-4 text-right">
+                    <div class="bg-dark p-1 text-right">
                         <a href="#"><h6 class="text-white"> Wyloguj </h6></a> 
                         <a href="#"><h6 class="text-white"> Zmień hasło </h6></a>
                     </div> 

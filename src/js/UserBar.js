@@ -1,12 +1,7 @@
-class UserBar{
-    constructor(elementId) {
-        this.element = document.createElement('section');
-        this.element.id = elementId;
-    }
-
-    render(){
-        document.querySelector('#root').appendChild(this.element);
-        this.element.innerHTML = `
+class UserBar {
+    static render() {
+        document.querySelector('#root').innerHTML = `
+            <section id="userBar">
             <div class="pos-f-t">
                 <div class="collapse" id="navbarToggleExternalContent">
                     <div class="bg-dark p-4 text-right">
@@ -29,6 +24,7 @@ class UserBar{
                     </button> 
                 </nav> 
             </div>
+            </section>
         `
     }
 }

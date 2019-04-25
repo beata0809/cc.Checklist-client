@@ -2,3 +2,15 @@
 @import "custom";
 @import "UserBar";
 @import "LoginPage";
+@import "404";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}

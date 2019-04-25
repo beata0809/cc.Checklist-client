@@ -1,17 +1,24 @@
-import '../scss/style.scss';
+import "../scss/style.scss";
 import "@babel/polyfill";
 import "bootstrap";
-import Api from './Api/Api';
-import UserBar from './UserBar';
-import LoginPage from './LoginPage';
+import Api from "./Api/Api";
+import UserBar from "./UserBar";
+import LoginPage from "./LoginPage";
+import Router from './Router';
 
-const userBar = new UserBar('#UserBar');
-const loginPage = new LoginPage('LoginPage');
+const routes = {
+    '/': LoginPage,
+    '/lists': UserBar
+};
 
-window.onload = () => {
-    console.log('Hello World');
-    Api.fetchExample();
-    userBar.render();
+const onload = () => {
+    const url = location.hash.slice(1).toLowerCase() || '/';
 
-    //loginPage.render();
-}
+    const page = Router(url, routes);
+    page.render();
+
+};
+
+window.addEventListener('hashchange', onload);
+
+window.addEventListener('load', onload);

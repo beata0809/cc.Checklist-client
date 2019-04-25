@@ -9,6 +9,9 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/bundle.js'
     },
+    devServer: {
+        historyApiFallback: true,
+    },
     module: {
         rules: [{
                 test: /\.m?js$/,

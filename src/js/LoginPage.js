@@ -25,7 +25,7 @@ class LoginPage {
                                     <label>Password</label>
                                     <input type="password" class="form-control" placeholder="Password">
                                 </div>
-                                <button type="submit" class="btn btn-black login">Login</button>
+                                <button type="submit" id="loginBtn" class="btn btn-black">Login</button>
                                 <button type="submit" class="btn btn-secondary">Register</button>
                             </form>
                         </div>
@@ -33,6 +33,10 @@ class LoginPage {
                 </div>
             </div>
         `;
+        document.querySelector("#loginBtn").addEventListener('click', e => {
+            e.preventDefault();
+            window.location.hash = '#/lists';
+        })
     }
 }
 

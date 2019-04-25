@@ -4,7 +4,7 @@ import "bootstrap";
 import Api from "./Api/Api";
 import UserBar from "./UserBar";
 import LoginPage from "./LoginPage";
-import Router from './Router';
+import router from './router';
 
 const routes = {
     '/': LoginPage,
@@ -14,7 +14,7 @@ const routes = {
 const onload = () => {
     const url = location.hash.slice(1).toLowerCase() || '/';
 
-    const page = Router(url, routes);
+    const page = router(url, routes);
     page.render();
 
 };

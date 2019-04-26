@@ -38,26 +38,32 @@ class Project {
         showProjectButton.addEventListener('click', () => {
           JSON.parse(localStorage.getItem('user')).projects.forEach(project => {
             if(this.name === project.title) {
+              const projectTitle = document.querySelector('.header');
+              projectTitle.innerHTML = `<h1>${project.title}</h1>`;
+
               const ListsPannel = document.querySelector('.lists');
 
               project.lists.forEach(list => {
                 ListsPannel.innerHTML = `
                 <div class='list'>
-                  <h2>List 1</h2>
+                  <h2>${list.title}</h2>
                   <div class='tasks'>
 
                   </div>
                 </div>
                 `;
+
                 const tasksPannel = document.querySelector('.tasks');
 
                 list.tasks.forEach(task => {
-                  console.log(task);
-                  const task2 = document.createElement('input');
-                  task2.setAttribute('type', 'checkbox');
-                  console.log(task2);
-                  task2.innerHTML = `${task.name}`;
-                  tasksPannel.appendChild(task2);
+                  const checkbox = document.createElement('input');
+                  checkbox.setAttribute('type', 'checkbox');
+                  tasksPannel.appendChild(checkbox);
+                  const taskText = document.createElement('span');
+                  taskText.innerText = `${task.name}`;
+                  tasksPannel.appendChild(taskText);
+                  const lineBreak = document.createElement('br');
+                  tasksPannel.appendChild(lineBreak);
                 });
               });
             }

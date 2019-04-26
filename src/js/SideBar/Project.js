@@ -1,3 +1,5 @@
+import MainPannel from "../MainPannel";
+
 class Project {
   constructor(name) {
     this.element = document.createElement('section');
@@ -31,6 +33,36 @@ class Project {
               </div>
             </div>
         `;
+
+        const showProjectButton = document.querySelector('.btn-link');
+        showProjectButton.addEventListener('click', () => {
+          JSON.parse(localStorage.getItem('user')).projects.forEach(project => {
+            if(this.name === project.title) {
+              const ListsPannel = document.querySelector('.lists');
+
+              project.lists.forEach(list => {
+                ListsPannel.innerHTML = `
+                <div class='list'>
+                  <h2>List 1</h2>
+                  <div class='tasks'>
+
+                  </div>
+                </div>
+                `;
+                const tasksPannel = document.querySelector('.tasks');
+
+                list.tasks.forEach(task => {
+                  console.log(task);
+                  const task2 = document.createElement('input');
+                  task2.setAttribute('type', 'checkbox');
+                  console.log(task2);
+                  task2.innerHTML = `${task.name}`;
+                  tasksPannel.appendChild(task2);
+                });
+              });
+            }
+          });
+        });
   }
 }
 

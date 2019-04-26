@@ -1,5 +1,6 @@
 import Sidebar from './SideBar/SideBar';
 import Userbar from './UserBar';
+import MainPannel from './MainPannel';
 
 class App {
   static render() {
@@ -11,6 +12,7 @@ class App {
     element.className = 'wrapper';
     document.querySelector('#app').appendChild(element);
     Sidebar.render();
+    MainPannel.render();
   }
 }
 

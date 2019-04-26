@@ -1,0 +1,48 @@
+#MainPannel {
+  height: 100%;
+  width: 100%;
+
+  .header {
+    background-color: white;
+  }
+
+  h1 {
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 0;
+  }
+
+  .lists {
+    width: 100%;
+    background-color: rgba(240, 240, 240, 0.3);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .list {
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 550px;
+    background-color: rgba(200, 200, 200, 0.5);
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px gray;
+  }
+
+  .tasks {
+    margin: 10px 10px 20px 10px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  input {
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+}

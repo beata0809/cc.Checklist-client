@@ -1,13 +1,10 @@
 import Project from './Project';
-class SideBar {
-    constructor(elementId) {
-        this.element = document.createElement('section');
-        this.element.id = elementId;
-    }
 
-    render(){
-        document.querySelector('#root').appendChild(this.element);
-        this.element.innerHTML = `
+class SideBar {
+  static render() {
+    const element = document.createElement('div');
+    element.innerHTML = `
+        <section id="SideBar">
           <div class="accordion" id="accordionExample">
           </div>
           <div class="input-group mb-3">
@@ -16,16 +13,21 @@ class SideBar {
           </div>
             <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
           </div>
+        </section>
         `;
-        
-        let projectTitle = document.querySelector('.form-control').getAttribute('value');
-        const addProjectButton = document.getElementById('button-addon1');
-        addProjectButton.addEventListener('click', (project) => {
-          project = new Project(projectTitle);
-          project.render();
-          console.log('click');
-        }, false);
-    }
-   
+    document.getElementById('app').appendChild(element);
+
+    let projectTitle = document.querySelector('.form-control').getAttribute('value');
+    const addProjectButton = document.getElementById('button-addon1');
+    addProjectButton.addEventListener(
+      'click',
+      project => {
+        project = new Project(projectTitle);
+        project.render();
+        console.log('click');
+      },
+      false,
+    );
+  }
 }
- export default SideBar;
+export default SideBar;

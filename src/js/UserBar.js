@@ -1,7 +1,8 @@
 class UserBar {
   static render() {
-    document.querySelector('#root').innerHTML = `
-            <section id="userBar">
+    const element = document.createElement('section');
+    element.id = 'UserBar';
+    element.innerHTML = `
             <div class="pos-f-t">
                 <div class="collapse" id="navbarToggleExternalContent">
                     <div class="bg-dark p-4 text-right">
@@ -24,8 +25,8 @@ class UserBar {
                     </button>
                 </nav>
             </div>
-            </section>
         `;
+    document.getElementById('app').appendChild(element);
   }
 }
 

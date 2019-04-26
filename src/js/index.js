@@ -1,15 +1,13 @@
 import '../scss/style.scss';
 import '@babel/polyfill';
 import 'bootstrap';
-import Api from './Api/Api';
-import UserBar from './UserBar';
-import SideBar from './SideBar/SideBar'
+import App from './App';
 import LoginPage from './LoginPage';
 import router from './router';
 
 const routes = {
   '/': LoginPage,
-  '/lists': UserBar,
+  '/lists': App,
 };
 
 const onload = () => {
@@ -22,4 +20,3 @@ const onload = () => {
 window.addEventListener('hashchange', onload);
 
 window.addEventListener('load', onload);
-

@@ -1,17 +1,18 @@
-@import "~bootstrap/scss/bootstrap";
-@import "custom";
-@import "UserBar";
-@import "Sidebar";
-@import "LoginPage";
-@import "404";
+@import '~bootstrap/scss/bootstrap';
+@import 'custom';
+@import 'UserBar';
+@import 'Sidebar';
+@import 'LoginPage';
+@import '404';
+@import 'App';
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }

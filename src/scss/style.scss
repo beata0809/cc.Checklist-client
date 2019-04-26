@@ -2,10 +2,16 @@
 @import "custom";
 @import "UserBar";
 @import "Sidebar";
+@import "LoginPage";
+@import "404";
 
-
-*{
+* {
     box-sizing: border-box;
-    padding: 0;
     margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
 }

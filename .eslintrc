@@ -1,0 +1,32 @@
+{
+  "parser": "babel-eslint",
+  "plugins": ["react", "prettier"],
+  "extends": ["airbnb-base"],
+  "globals": {
+    "document": true,
+    "window": true,
+    "jQuery": true,
+    "$": true,
+    "localStorage": true,
+    "fetch": true,
+    "SERVER_URL": true
+  },
+  "root": true,
+  "rules": {
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "no-trailing-spaces": [2, { "skipBlankLines": true }],
+    "import/prefer-default-export": 0,
+    "import/no-unresolved": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/extensions": 0,
+    "no-underscore-dangle": 0,
+    "no-shadow": 0,
+    "no-console": 0,
+    "no-param-reassign": 0
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  }
+}

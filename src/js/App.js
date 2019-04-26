@@ -3,10 +3,9 @@ import Userbar from './UserBar';
 
 class App {
   static render() {
-    const app = document.createElement('div');
-    app.id = 'app';
-    document.getElementById('root').appendChild(app);
-
+    document.getElementById('root').innerHTML = `
+      <div id="app"></div>
+    `;
     Userbar.render();
     Sidebar.render();
   }

@@ -45,7 +45,8 @@ class LoginPage {
       const user = await Api.Login(loginData);
 
       if (user) {
-        localStorage.setItem('user', JSON.stringify(user));
+        const data = await Api.getUserById(user._id);
+        localStorage.setItem('user', JSON.stringify(data));
         window.location.hash = '#/lists';
       } else window.alert('Invalid email or password');
     });

@@ -14,6 +14,15 @@ class Api {
       console.log(ex.response.data);
     }
   }
+
+  static async getUserById(id) {
+    try {
+      const { data } = await checklist.get(`/users/${id}`);
+      return data;
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
 }
 
 export default Api;

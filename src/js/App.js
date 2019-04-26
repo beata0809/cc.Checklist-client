@@ -7,6 +7,9 @@ class App {
       <div id="app"></div>
     `;
     Userbar.render();
+    const element = document.createElement('div');
+    element.className = 'wrapper';
+    document.querySelector('#app').appendChild(element);
     Sidebar.render();
   }
 }

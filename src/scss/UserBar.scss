@@ -1,28 +1,26 @@
-#UserBar{
+#UserBar {
+  display: flex;
+  width: 100%;
+  background-color: rgb(221, 221, 221);
+  .navbar {
+    h4 {
+      // padding: 20px;
+      margin: 0;
+    }
+    i {
+      font-size: 2.5em;
+    }
+  }
+  .navbar-div {
+    width: 100vw;
     display: flex;
+    justify-content: flex-end;
+  }
+  .pos-f-t {
     width: 100%;
-    background-color: rgb(221, 221, 221);
-    .navbar {
-        h4 {
-            padding: 20px;
-            margin: 0;
-        }
-        i {
-            font-size: 2.5em;
-        }
-    }
-    .navbar-div {
-        width: 100vw;
-        display: flex;
-        justify-content: flex-end;
-    }
-    .pos-f-t{
-        width: 100%;
-    }
-    h6{
-        padding: 5px 10px 5px 0;
-        margin: 0;
-    }
-    
+  }
+  h6 {
+    padding: 5px 10px 5px 0;
+    margin: 0;
+  }
 }
-

@@ -1,22 +1,21 @@
-import "../scss/style.scss";
-import "@babel/polyfill";
-import "bootstrap";
-import Api from "./Api/Api";
-import UserBar from "./UserBar";
-import LoginPage from "./LoginPage";
+import '../scss/style.scss';
+import '@babel/polyfill';
+import 'bootstrap';
+import Api from './Api/Api';
+import UserBar from './UserBar';
+import LoginPage from './LoginPage';
 import router from './router';
 
 const routes = {
-    '/': LoginPage,
-    '/lists': UserBar
+  '/': LoginPage,
+  '/lists': UserBar,
 };
 
 const onload = () => {
-    const url = location.hash.slice(1).toLowerCase() || '/';
+  const url = window.location.hash.slice(1).toLowerCase() || '/';
 
-    const page = router(url, routes);
-    page.render();
-
+  const page = router(url, routes);
+  page.render();
 };
 
 window.addEventListener('hashchange', onload);

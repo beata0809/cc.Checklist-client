@@ -1,14 +1,14 @@
 class UserBar {
-    static render() {
-        document.querySelector('#root').innerHTML = `
+  static render() {
+    document.querySelector('#root').innerHTML = `
             <section id="userBar">
             <div class="pos-f-t">
                 <div class="collapse" id="navbarToggleExternalContent">
                     <div class="bg-dark p-4 text-right">
-                        <a href="#"><h5 class="text-white"> Wyloguj </h5></a> 
+                        <a href="#"><h5 class="text-white"> Wyloguj </h5></a>
                         <a href="#"><h5 class="text-white"> Zmień hasło </h5></a>
-                    </div> 
-                </div> 
+                    </div>
+                </div>
                 <nav class="navbar navbar-light float-right text-right pr-3
                 style="background-color: rgb(100, 0, 0);">
                     <i class="fas fa-user-circle"></i>
@@ -20,13 +20,13 @@ class UserBar {
                         aria-controls="navbarToggleExternalContent"
                         aria-expanded="false"
                         aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"> </span> 
-                    </button> 
-                </nav> 
+                        <span class="navbar-toggler-icon"> </span>
+                    </button>
+                </nav>
             </div>
             </section>
-        `
-    }
+        `;
+  }
 }
 
 export default UserBar;

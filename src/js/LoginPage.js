@@ -1,10 +1,12 @@
-class LoginPage {
-    static render() {
-        document.body.style.backgroundImage = `url(./src/img/background.jpg)`;
-        document.body.style.backgroundSize = 'cover';
-        document.body.style.backgroundRepeat = 'no-repeat';
+import Api from './Api/Api';
 
-        document.querySelector("#root").innerHTML = `
+class LoginPage {
+  static render() {
+    document.body.style.backgroundImage = `url(./src/img/background.jpg)`;
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundRepeat = 'no-repeat';
+
+    document.querySelector('#root').innerHTML = `
             <div id="LoginPage">
                 <div class="sidenav">
                     <div class="login-main-text">
@@ -14,7 +16,7 @@ class LoginPage {
                     </div>
                 </div>
                 <div class="main">
-                    
+
                         <div class="login-form">
                             <form>
                                 <div class="form-group">
@@ -29,15 +31,25 @@ class LoginPage {
                                 <button type="submit" class="btn btn-secondary">Register</button>
                             </form>
                         </div>
-                    
+
                 </div>
             </div>
         `;
-        document.querySelector("#loginBtn").addEventListener('click', e => {
-            e.preventDefault();
-            window.location.hash = '#/lists';
-        })
-    }
+    document.querySelector('#loginBtn').addEventListener('click', async e => {
+      e.preventDefault();
+      const loginData = {
+        email: document.querySelector('input[type=text]').value,
+        password: document.querySelector('input[type=password]').value,
+      };
+      console.log(loginData);
+      const user = await Api.Login(loginData);
+
+      if (user) {
+        localStorage.setItem('user', JSON.stringify(user));
+        window.location.hash = '#/lists';
+      } else window.alert('Invalid email or password');
+    });
+  }
 }
 
 export default LoginPage;

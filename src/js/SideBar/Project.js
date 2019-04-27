@@ -77,7 +77,10 @@ class Project {
     document.querySelector('#SideBar').appendChild(project);
     const listInput = document.querySelector(`#${titleNoSpaces}-input`);
     document.querySelector(`#${titleNoSpaces}-btn`).addEventListener('click', () => List.addList(listInput, title));
-    document.querySelector('.btn-link').addEventListener('click', () => MainPannel.getLists(title));
+    const projects = document.getElementsByClassName('btn-link')
+    for (let i = 0; i < projects.length; i++) {
+      project.addEventListener('click', () => MainPannel.getLists(title));
+    }
   }
 }
 

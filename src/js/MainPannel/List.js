@@ -1,9 +1,13 @@
 
 class List {
 
-  // render wszystkich danych dla kazdej listy
-  static renderLists() {
+  static renderLists(lists) {
+    const listsPannel = document.querySelector('.lists');
+    listsPannel.innerHTML = '';
 
+    lists.forEach(list => {
+      this.render(list);
+    });
   }
 
   // dodanie do bazy
@@ -12,23 +16,19 @@ class List {
   }
 
   // render pojedynczej listy
-  static render() {
+  static render(data) {
+    const element = document.createElement('div');
+    element.className = 'list';
+    element.innerHTML = `
+        <h2>${data.title}</h2>
+          <div class='tasks'>
+          </div>
+        `;
 
-    // Cos takiego sie przyda bez inputow, inputy ida do renderLists()
+    // Trzeba dodac taski do div'a .tasks
+    // wzor taska "<input type="checkbox">Task example</input><br>"
 
-    /*
-            <div class='list'>
-              <h2>List title</h2>
-              <div class='tasks'>
-                <input type="checkbox">Umyć zęby!</input><br>
-                <input type="checkbox">Wyjść z psem</input><br>
-                <input type="checkbox">Umyć naczynia</input><br>
-                <input type="checkbox">Udemy - React - Udemy - React - Udemy - React</input><br>
-                <input type="checkbox">Udemy - React - Udemy - React - Udemy - React</input><br>
-                <input type="checkbox">Udemy - React - Udemy - React - Udemy - React</input><br>
-                <input type="checkbox">Udemy - React - Udemy - React - Udemy - React</input><br>
-              </div>
-            </div>
+    document.querySelector('.lists').appendChild(element);
   }
 }
 

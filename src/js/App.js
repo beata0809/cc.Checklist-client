@@ -1,5 +1,6 @@
 import Sidebar from './SideBar/SideBar';
 import Userbar from './UserBar';
+import MainPannel from './MainPannel';
 import Project from './SideBar/Project';
 import List from './SideBar/List';
 
@@ -18,8 +19,7 @@ class App {
     document.querySelector('#app').appendChild(element);
 
     Sidebar.render();
-    Project.renderProjects(userData);
-    List.renderLists(userData);
+    MainPannel.render();
   }
 }
 

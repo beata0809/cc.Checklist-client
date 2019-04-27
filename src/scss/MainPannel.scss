@@ -1,0 +1,72 @@
+#MainPannel {
+  height: 100%;
+  width: 100%;
+  font-size: 18px;
+
+  .project {
+    width: 100%;
+  }
+  .header {
+    background-color: white;
+  }
+
+  h1 {
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 0;
+  }
+
+  .lists {
+    width: 100%;
+    background-color: rgba(240, 240, 240, 0.3);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .list {
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 550px;
+    background-color: rgba(200, 200, 200, 0.5);
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px gray;
+  }
+
+  .tasks {
+    margin: 10px 10px 20px 10px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  input {
+    margin-top: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  /*input[type=checkbox] {
+    display: none;
+  }
+  input[type=checkbox] + span:before {
+    content: "\2714";
+    border: 0.1em solid #000;
+    border-radius: 0.2em;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    padding-left: 0.2em;
+    padding-bottom: 0.3em;
+    margin-right: 0.2em;
+    vertical-align: bottom;
+    color: transparent;
+
+  }
+  input[type=checkbox]:checked + span:before {
+    color: rgb(129, 14, 14);
+  }*/
+}

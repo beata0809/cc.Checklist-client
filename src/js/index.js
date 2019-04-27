@@ -10,6 +10,7 @@ const routes = {
   '/lists': App,
 };
 
+
 const onload = () => {
   const url = window.location.hash.slice(1).toLowerCase() || '/';
 

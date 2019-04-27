@@ -1,5 +1,11 @@
-#SideBar{
-    width: 33%;
-    height: 100vh;
-    background-color: rgb(221, 221, 221);
+#SideBar {
+  width: 33%;
+  height: 100vh;
+  background-color: rgb(221, 221, 221);
+  overflow-y: scroll;
+}
+
+.addProject {
+  margin: auto;
+  width: 90%;
 }

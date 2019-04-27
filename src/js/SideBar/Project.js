@@ -1,36 +1,80 @@
+import List from './List';
+import Api from '../Api/Api';
+
 class Project {
-  constructor(name) {
-    this.element = document.createElement('section');
-    this.name = name;
-    console.log(name);
+  static renderProjects(data) {
+    const { projects } = data;
+    projects.forEach(project => {
+      this.render(project.title);
+    });
   }
 
-  render() {
-    document.querySelector('#accordionExample').appendChild(this.element);
-    this.element.innerHTML = `
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
-                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse-${
-                    this.name
-                  }" aria-expanded="true" aria-controls="collapse-${this.name}">
-                    ${this.name}
-                  </button>
-                </h2>
-              </div>
+  static async addProject(input) {
+    const userData = JSON.parse(localStorage.getItem('user'));
+    const name = input.value;
+    const newProject = {
+      userId: userData._id,
+      project: {
+        title: name,
+      },
+    };
+    this.render(name);
+    const data = await Api.addProject(newProject);
+    userData.projects.push({ title: name, _id: data._id, lists: [] });
+    localStorage.setItem('user', JSON.stringify(userData));
+    document.querySelector('form').reset();
+  }
 
-              <div id="collapse-${
-                this.name
-              }" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="card-body">
-                  Coś
-                </div>
-                <div class="card-body">
-                  Coś
-                </div>
-              </div>
+  static render(title) {
+    const titleNoSpaces = title.replace(/\s/g, '');
+    const project = document.createElement('div');
+    project.id = 'accordion';
+    project.innerHTML = `
+          <div class="card">
+            <div class="card-header" id="heading-${titleNoSpaces}">
+              <h5 class="mb-0">
+                <button
+                  class="btn btn-link"
+                  data-toggle="collapse"
+                  data-target="#collapse-${titleNoSpaces}"
+                  aria-expanded="true"
+                  aria-controls="collapse-${titleNoSpaces}"
+                >
+                  ${title}
+                </button>
+              </h5>
             </div>
-        `;
+            <div
+              id="collapse-${titleNoSpaces}"
+              class="collapse hide"
+              aria-labelledby="heading-${titleNoSpaces}"
+              data-parent="#accordion"
+            >
+            <div class="card-body">
+            <form id="${titleNoSpaces}-form">
+              <div class="input-group mb-3 addList">
+                <input
+                  id="${titleNoSpaces}-input"
+                  type="text"
+                  class="form-control"
+                  placeholder="Dodaj nową listę"
+                  aria-label="Dodaj nową listę"
+                  aria-describedby="basic-addon2"
+                >
+
+                <div class="input-group-append">
+                  <button id="${titleNoSpaces}-btn" class="btn btn-outline-secondary" type="button">Dodaj</button>
+                </div>
+              </form>
+              </div>
+            <ul class="list-group list-group-flush" id="list-${titleNoSpaces}"></ul>
+            </div>
+          </div>
+          </div>
+    `;
+    document.querySelector('#SideBar').appendChild(project);
+    const listInput = document.querySelector(`#${titleNoSpaces}-input`);
+    document.querySelector(`#${titleNoSpaces}-btn`).addEventListener('click', () => List.addList(listInput, title));
   }
 }
 

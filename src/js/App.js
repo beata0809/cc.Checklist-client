@@ -1,6 +1,6 @@
 import Sidebar from './SideBar/SideBar';
 import Userbar from './UserBar';
-import MainPannel from './MainPannel';
+import MainPannel from './MainPannel/MainPannel';
 import Project from './SideBar/Project';
 import List from './SideBar/List';
 

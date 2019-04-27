@@ -1,7 +1,7 @@
 import List from './List';
 import Api from '../Api/Api';
 
-import MainPannel from '../MainPannel';
+import MainPannel from '../MainPannel/MainPannel';
 
 class Project {
   static renderProjects(data) {

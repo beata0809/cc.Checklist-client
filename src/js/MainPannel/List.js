@@ -38,7 +38,33 @@ class List {
         <br>
         `;
       element.querySelector('.tasks').appendChild(showTask);
+
+       //wykreślanie i zmiana statusu task'ów
+      const checkbox = showTask.querySelector('[type=checkbox]');
+      checkbox.addEventListener('click', () => {
+        if (checkbox.checked) {
+          showTask.style.textDecoration = 'line-through';
+          task.done = true;
+        } else {
+            showTask.style.textDecoration = 'none';
+            task.done = false;
+        }
+        listStatusCheck();
+      });
     })
+
+    //status i znikanie list
+    const listStatusCheck = () => {
+      let listStatus = data.tasks.every(el => {
+        return el.done === true;
+      });
+
+      if (listStatus) {
+        //element.style.display = 'none'; //inaczej będzie znikać po zaznaczeniu tego jednego tasku
+      } else {
+        element.style.display = '';
+      }
+    };
 
 
     element.querySelector('button').addEventListener('click', () => {
@@ -46,6 +72,7 @@ class List {
     })
     document.querySelector('.lists').appendChild(element);
   }
+
 }
 
 export default List;

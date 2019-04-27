@@ -19,6 +19,8 @@ class App {
     document.querySelector('#app').appendChild(element);
 
     Sidebar.render();
+    Project.renderProjects(userData);
+    List.renderLists(userData);
     MainPannel.render();
   }
 }

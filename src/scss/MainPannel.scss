@@ -1,7 +1,11 @@
 #MainPannel {
   height: 100%;
   width: 100%;
+  font-size: 18px;
 
+  .project {
+    width: 100%;
+  }
   .header {
     background-color: white;
   }
@@ -43,6 +47,26 @@
   input {
     margin-top: 10px;
     margin-right: 10px;
+    cursor: pointer;
   }
+  /*input[type=checkbox] {
+    display: none;
+  }
+  input[type=checkbox] + span:before {
+    content: "\2714";
+    border: 0.1em solid #000;
+    border-radius: 0.2em;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    padding-left: 0.2em;
+    padding-bottom: 0.3em;
+    margin-right: 0.2em;
+    vertical-align: bottom;
+    color: transparent;
 
+  }
+  input[type=checkbox]:checked + span:before {
+    color: rgb(129, 14, 14);
+  }*/
 }

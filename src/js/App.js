@@ -6,22 +6,25 @@ import List from './SideBar/List';
 
 class App {
   static render() {
-    const userData = JSON.parse(localStorage.getItem('user'));
+    if (window.location.hash === '') window.location.hash = '#/lists';
+    else {
+      const userData = JSON.parse(localStorage.getItem('user'));
 
-    document.getElementById('root').innerHTML = `
+      document.getElementById('root').innerHTML = `
       <div id="app"></div>
     `;
 
-    Userbar.render();
+      Userbar.render();
 
-    const element = document.createElement('div');
-    element.className = 'wrapper';
-    document.querySelector('#app').appendChild(element);
+      const element = document.createElement('div');
+      element.className = 'wrapper';
+      document.querySelector('#app').appendChild(element);
 
-    Sidebar.render();
-    Project.renderProjects(userData);
-    List.renderLists(userData);
-    MainPannel.render();
+      Sidebar.render();
+      Project.renderProjects(userData);
+      List.renderLists(userData);
+      MainPannel.render();
+    }
   }
 }
 

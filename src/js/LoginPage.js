@@ -17,6 +17,24 @@ class LoginPage {
     } else window.alert('Invalid email or password');
   }
 
+  static async register(e) {
+    e.preventDefault();
+    console.log(1);
+    const registerData = {
+      email: document.querySelector('input[type=text]').value,
+      password: document.querySelector('input[type=password]').value,
+    };
+    const account = await Api.createUser(registerData);
+    console.log(account);
+    if (account.status == 400) {
+      window.alert(account.data);
+    } else {
+      document.querySelector('input[type=text]').value = null;
+      document.querySelector('input[type=password]').value = null;
+      window.alert('Account created. Now you can log in.');
+    }
+  }
+
   static render() {
     document.body.style.backgroundImage = `url(./src/img/background.jpg)`;
     document.body.style.backgroundSize = 'cover';
@@ -52,25 +70,7 @@ class LoginPage {
             </div>
         `;
     document.querySelector('#loginBtn').addEventListener('click', e => this.login(e));
-
-    document.querySelector('#registerBtn').addEventListener('click', async e => {
-      e.preventDefault();
-      console.log(1)
-      const registerData = {
-        email: document.querySelector('input[type=text]').value,
-        password: document.querySelector('input[type=password]').value,
-      };
-      //console.log(registerData);
-      const account = await Api.createUser(registerData)
-      console.log(account)
-      if (account.status == 400){
-        window.alert(account.data)
-      } else {
-        document.querySelector('input[type=text]').value = null;
-        document.querySelector('input[type=password]').value = null;
-        window.alert('Account created. Now you can log in.');
-      }
-    });
+    document.querySelector('#registerBtn').addEventListener('click', async e => this.register(e));
   }
 }
 

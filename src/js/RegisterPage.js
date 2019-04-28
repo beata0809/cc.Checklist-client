@@ -1,6 +1,63 @@
 import Api from './Api/Api';
 
 class RegisterPage {
+  static async register(e) {
+    e.preventDefault();
+
+    if (this.validate()) {
+      const registerData = {
+        name: document.querySelector('#name').value,
+        email: document.querySelector('#email').value,
+        password: document.querySelector('#pass').value,
+      };
+
+      const newUser = await Api.createUser(registerData);
+      console.log(registerData);
+      // const newUser = registerData;
+
+      if (newUser) {
+        window.alert('New account was created. Now you can log in.');
+        window.location.hash = '#';
+      } else {
+        window.alert('Something went wrong. Account was not created.');
+      }
+    }
+  }
+
+  static validate() {
+    const fields = ['name', 'email', 'pass', 'pass2'];
+    let valid = true;
+
+    fields.forEach(field => {
+      let validField = document.querySelector(`#valid${field}`);
+      let classes = document.querySelector(`#${field}`).classList;
+      if (!document.querySelector(`#${field}`).value) {
+        if (!classes.contains('notvalid')) classes.toggle('notvalid');
+        valid = false;
+        validField.innerHTML = 'Field cannot be empty';
+      } else {
+        if (classes.contains('notvalid')) classes.toggle('notvalid');
+        validField.innerHTML = '';
+      }
+    });
+
+    const validpass2 = document.querySelector('#validpass2');
+    let classes1 = document.querySelector(`#pass`).classList;
+    let classes2 = document.querySelector(`#pass2`).classList;
+    if (valid) {
+      if (document.querySelector('#pass').value !== document.querySelector('#pass2').value) {
+        if (!classes1.contains('notvalid')) classes1.toggle('notvalid');
+        if (!classes2.contains('notvalid')) classes2.toggle('notvalid');
+
+        valid = false;
+        validpass2.innerHTML = 'The password and its confirm are not the same';
+      } else if (!document.querySelector(`#pass`).value & !document.querySelector(`#pass2`).value) {
+        validpass2.innerHTML = '';
+      }
+    }
+    return valid;
+  }
+
   static render() {
     document.body.style.backgroundImage = `url(./src/img/background.jpg)`;
     document.body.style.backgroundSize = 'cover';
@@ -44,65 +101,7 @@ class RegisterPage {
             </div>
         `;
 
-
-
-    document.querySelector('#registerBtn').addEventListener('click', async e => {
-      e.preventDefault();
-
-      const valid = validateFunction();
-      if (valid) {
-        const registerData = {
-          name: document.querySelector('#name').value,
-          email: document.querySelector('#email').value,
-          password: document.querySelector('#pass').value,
-        };
-
-        const newUser = await Api.createUser(registerData)
-
-        if (newUser) {
-          window.alert('New account was created. Now you can log in.');
-          window.location.hash = '#';
-        } else {
-          window.alert('Something went wrong. Account was not created.');
-        }
-      }
-    });
-
-
-    function validateFunction() {
-
-      const fields = ['name', 'email', 'pass', 'pass2'];
-      let valid = true;
-
-      fields.forEach(field => {
-        let validField = document.querySelector(`#valid${field}`);
-        let classes = document.querySelector(`#${field}`).classList;
-        if (!document.querySelector(`#${field}`).value) {
-          if (!classes.contains("notvalid")) classes.toggle("notvalid");
-          valid = false;
-          validField.innerHTML = 'Field cannot be empty';
-        } else {
-          if (classes.contains("notvalid")) classes.toggle("notvalid");
-          validField.innerHTML = '';
-        }
-      });
-
-      const validpass2 = document.querySelector('#validpass2');
-      let classes1 = document.querySelector(`#pass`).classList;
-      let classes2 = document.querySelector(`#pass2`).classList;
-      if (valid) {
-        if (document.querySelector('#pass').value !== document.querySelector('#pass2').value) {
-          if (!classes1.contains("notvalid")) classes1.toggle("notvalid");
-          if (!classes2.contains("notvalid")) classes2.toggle("notvalid");
-
-          valid = false;
-          validpass2.innerHTML = 'The password and its confirm are not the same';
-        } else if (!document.querySelector(`#pass`).value & !document.querySelector(`#pass2`).value) {
-          validpass2.innerHTML = '';
-        }
-      }
-      return valid;
-    }
+    document.querySelector('#registerBtn').addEventListener('click', async e => this.register(e));
   }
 }
 

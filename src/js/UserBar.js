@@ -1,6 +1,6 @@
 class UserBar {
   static render() {
-    const userEmail = JSON.parse(localStorage.getItem('user')).email;
+    const { name, email } = JSON.parse(localStorage.getItem('user'));
     const element = document.createElement('section');
     element.id = 'UserBar';
     element.innerHTML = `
@@ -14,7 +14,7 @@ class UserBar {
                 <nav class="navbar navbar-light float-right text-right pr-3
                 style="background-color: rgb(100, 0, 0);">
                     <i class="fas fa-user-circle"></i>
-                    <h4>${userEmail}</h4>
+                    <h4>${name || email}</h4>
                     <button class="navbar-toggler"
                         type="button"
                         data-toggle="collapse"

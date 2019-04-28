@@ -1,6 +1,22 @@
 import Api from './Api/Api';
 
 class LoginPage {
+  static async login(e) {
+    e.preventDefault();
+    const loginData = {
+      email: document.querySelector('input[type=text]').value,
+      password: document.querySelector('input[type=password]').value,
+    };
+    console.log(loginData);
+    const user = await Api.Login(loginData);
+
+    if (user) {
+      const data = await Api.getUserById(user._id);
+      localStorage.setItem('user', JSON.stringify(data));
+      window.location.hash = '#/lists';
+    } else window.alert('Invalid email or password');
+  }
+
   static render() {
     document.body.style.backgroundImage = `url(./src/img/background.jpg)`;
     document.body.style.backgroundSize = 'cover';
@@ -35,21 +51,7 @@ class LoginPage {
                 </div>
             </div>
         `;
-    document.querySelector('#loginBtn').addEventListener('click', async e => {
-      e.preventDefault();
-      const loginData = {
-        email: document.querySelector('input[type=text]').value,
-        password: document.querySelector('input[type=password]').value,
-      };
-      console.log(loginData);
-      const user = await Api.Login(loginData);
-
-      if (user) {
-        const data = await Api.getUserById(user._id);
-        localStorage.setItem('user', JSON.stringify(data));
-        window.location.hash = '#/lists';
-      } else window.alert('Invalid email or password');
-    });
+    document.querySelector('#loginBtn').addEventListener('click', e => this.login(e));
   }
 }
 

@@ -5,11 +5,12 @@ import App from './App';
 import LoginPage from './LoginPage';
 import router from './router';
 
+const user = JSON.parse(localStorage.getItem('user'));
+
 const routes = {
-  '/': LoginPage,
+  '/': user ? App : LoginPage,
   '/lists': App,
 };
-
 
 const onload = () => {
   const url = window.location.hash.slice(1).toLowerCase() || '/';

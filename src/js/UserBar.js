@@ -1,4 +1,8 @@
 class UserBar {
+  static logout() {
+    localStorage.removeItem('user');
+  }
+
   static render() {
     const userEmail = JSON.parse(localStorage.getItem('user')).email;
     const element = document.createElement('section');
@@ -7,14 +11,13 @@ class UserBar {
             <div class="pos-f-t">
                 <div class="collapse" id="navbarToggleExternalContent">
                     <div class="bg-dark p-4 text-right">
-                        <a href="#"><h5 class="text-white"> Wyloguj </h5></a>
-                        <a href="#"><h5 class="text-white"> Zmień hasło </h5></a>
+                        <a href="/"><h5 class="text-white">Wyloguj</h5></a>
                     </div>
                 </div>
                 <nav class="navbar navbar-light float-right text-right pr-3
                 style="background-color: rgb(100, 0, 0);">
                     <i class="fas fa-user-circle"></i>
-                    <h4>${userEmail}</h4>
+                    <h4 class="userName">${userEmail}</h4>
                     <button class="navbar-toggler"
                         type="button"
                         data-toggle="collapse"
@@ -28,6 +31,7 @@ class UserBar {
             </div>
         `;
     document.getElementById('app').appendChild(element);
+    document.querySelector('a h5').addEventListener('click', this.logout);
   }
 }
 

@@ -54,12 +54,12 @@ class Api {
       console.log(ex);
     }
   }
-  static async createUser(registerData){
+  static async createUser(registerData) {
     try {
-      const {data} = await checklist.post('/users/', registerData)
+      const { data } = await checklist.post('/users/', registerData);
       return data;
-    } catch (ex){
-      return ex.response
+    } catch (ex) {
+      return ex.response;
     }
   }
 }

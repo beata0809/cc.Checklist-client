@@ -12,14 +12,12 @@ class RegisterPage {
       };
 
       const newUser = await Api.createUser(registerData);
-      console.log(registerData);
-      // const newUser = registerData;
-
-      if (newUser) {
+      console.log(newUser);
+      if (!newUser.data) {
         window.alert('New account was created. Now you can log in.');
         window.location.hash = '#';
       } else {
-        window.alert('Something went wrong. Account was not created.');
+        window.alert(newUser.data);
       }
     }
   }
@@ -59,10 +57,6 @@ class RegisterPage {
   }
 
   static render() {
-    document.body.style.backgroundImage = `url(./src/img/background.jpg)`;
-    document.body.style.backgroundSize = 'cover';
-    document.body.style.backgroundRepeat = 'no-repeat';
-
     document.querySelector('#root').innerHTML = `
             <div id="RegisterPage">
               <div class="register-main">

@@ -17,22 +17,13 @@ class LoginPage {
     } else window.alert('Invalid email or password');
   }
 
-  static async register(e) {
-    e.preventDefault();
-    console.log(1);
-    const registerData = {
-      email: document.querySelector('input[type=text]').value,
-      password: document.querySelector('input[type=password]').value,
-    };
-    const account = await Api.createUser(registerData);
-    console.log(account);
-    if (account.status == 400) {
-      window.alert(account.data);
-    } else {
-      document.querySelector('input[type=text]').value = null;
-      document.querySelector('input[type=password]').value = null;
-      window.alert('Account created. Now you can log in.');
-    }
+  static notValid() {
+    const fields = ['email', 'pass'];
+    fields.forEach(field => {
+      let classes = document.querySelector(`#${field}`).classList;
+      if (!classes.contains('notvalid')) classes.toggle('notvalid');
+    });
+    document.querySelector(`#info`).innerHTML = 'Invalid email or password';
   }
 
   static render() {
@@ -65,19 +56,11 @@ class LoginPage {
                 </div>
             </div>
         `;
+    document.querySelector('#loginBtn').addEventListener('click', async e => this.login(e));
     document.querySelector('#registerBtn').addEventListener('click', async e => {
       e.preventDefault();
       window.location.hash = '#/register';
     });
-
-    function notValid() {
-      const fields = ['email', 'pass'];
-      fields.forEach(field => {
-        let classes = document.querySelector(`#${field}`).classList;
-        if (!classes.contains("notvalid")) classes.toggle("notvalid");
-      });
-      document.querySelector(`#info`).innerHTML = 'Invalid email or password';
-    }
   }
 }
 

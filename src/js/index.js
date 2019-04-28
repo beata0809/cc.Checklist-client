@@ -3,11 +3,13 @@ import '@babel/polyfill';
 import 'bootstrap';
 import App from './App';
 import LoginPage from './LoginPage';
+import RegisterPage from './RegisterPage';
 import router from './router';
 
 const routes = {
   '/': LoginPage,
   '/lists': App,
+  '/register': RegisterPage
 };
 
 

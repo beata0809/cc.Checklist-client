@@ -16,40 +16,55 @@ class LoginPage {
                     </div>
                 </div>
                 <div class="main">
-
                         <div class="login-form">
                             <form>
                                 <div class="form-group">
-                                    <label>User Name</label>
-                                    <input type="text" class="form-control" placeholder="User Name">
+                                    <label>E-mail</label>
+                                    <input id=email type="text" class="form-control" placeholder="E-mail">
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="Password">
+                                    <input id=pass type="password" class="form-control" placeholder="Password">
+                                    <p id="info"></p>
                                 </div>
                                 <button type="submit" id="loginBtn" class="btn btn-black">Login</button>
-                                <button type="submit" class="btn btn-secondary">Register</button>
+                                <button type="submit" id="registerBtn" class="btn btn-secondary">Register</button>
                             </form>
                         </div>
 
                 </div>
             </div>
         `;
+
     document.querySelector('#loginBtn').addEventListener('click', async e => {
       e.preventDefault();
       const loginData = {
         email: document.querySelector('input[type=text]').value,
         password: document.querySelector('input[type=password]').value,
       };
-      console.log(loginData);
       const user = await Api.Login(loginData);
 
       if (user) {
         const data = await Api.getUserById(user._id);
         localStorage.setItem('user', JSON.stringify(data));
         window.location.hash = '#/lists';
-      } else window.alert('Invalid email or password');
+      } else notValid();
     });
+
+    document.querySelector('#registerBtn').addEventListener('click', async e => {
+      e.preventDefault();
+      window.location.hash = '#/register';
+    });
+
+
+    function notValid() {
+      const fields = ['email', 'pass'];
+      fields.forEach(field => {
+        let classes = document.querySelector(`#${field}`).classList;
+        if (!classes.contains("notvalid")) classes.toggle("notvalid");
+      });
+      document.querySelector(`#info`).innerHTML = 'Invalid email or password';
+    }
   }
 }
 

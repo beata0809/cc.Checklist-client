@@ -41,12 +41,12 @@ class Task {
     const listItem = document.createElement('li'); //utworzenie elementu listy
     listItem.className = 'list-group-item'; //nadanie mu klasy
     listItem.innerHTML = `
-    <input id="${taskNameNoSpaces}-checkbox" type="checkbox" ${status ? 'checked class="done"' : ''}>
-      <span id="${taskNameNoSpaces}-span" ${status ? 'class="done"' : ''}>${taskName}</span>
+    <input id="checkbox-${taskNameNoSpaces}" type="checkbox" ${status ? 'checked class="done"' : ''}>
+      <span id="span-${taskNameNoSpaces}" ${status ? 'class="done"' : ''}>${taskName}</span>
       </input>`; // dodanie do elementu listy html'a
     document.querySelector(`#list-main-${listName.replace(/\s/g, '')}`).appendChild(listItem); //dołączenie elemntu listy do listy
-    const checkbox = document.querySelector(`#${taskNameNoSpaces}-checkbox`); // chwycenie checkboxa
-    const innerText = document.querySelector(`#${taskNameNoSpaces}-span`); //chwycenie spana wewnątrz checkboxa
+    const checkbox = document.querySelector(`#checkbox-${taskNameNoSpaces}`); // chwycenie checkboxa
+    const innerText = document.querySelector(`#span-${taskNameNoSpaces}`); //chwycenie spana wewnątrz checkboxa
     checkbox.addEventListener('click', async () => await this.changeStatus(innerText, status, _id)); //wywołanie change status po klinkięciu
   }
 }

@@ -2,6 +2,7 @@
   height: 100%;
   width: 100%;
   font-size: 18px;
+  overflow-y: auto;
 
   .project {
     width: 100%;
@@ -27,12 +28,13 @@
 
   .list {
     min-width: 300px;
-    min-height: 300px;
+    height: 300px;
     max-width: 550px;
     background-color: rgba(200, 200, 200, 0.5);
     margin: 15px;
     border-radius: 10px;
     box-shadow: 5px 5px 5px gray;
+    overflow-y: auto;
   }
 
   .tasks {
@@ -43,27 +45,6 @@
     text-align: center;
     margin-top: 10px;
   }
-
-  /*input[type=checkbox] {
-    display: none;
-  }
-  input[type=checkbox] + span:before {
-    content: "\2714";
-    border: 0.1em solid #000;
-    border-radius: 0.2em;
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    padding-left: 0.2em;
-    padding-bottom: 0.3em;
-    margin-right: 0.2em;
-    vertical-align: bottom;
-    color: transparent;
-
-  }
-  input[type=checkbox]:checked + span:before {
-    color: rgb(129, 14, 14);
-  }*/
 
   form {
     margin: 0 10px;

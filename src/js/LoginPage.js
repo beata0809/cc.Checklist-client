@@ -46,16 +46,16 @@ class LoginPage {
                     </div>
                 </div>
                 <div class="main">
-
                         <div class="login-form">
                             <form>
                                 <div class="form-group">
-                                    <label>User Name</label>
-                                    <input type="text" class="form-control" placeholder="User Name">
+                                    <label>E-mail</label>
+                                    <input id=email type="text" class="form-control" placeholder="E-mail">
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="Password">
+                                    <input id=pass type="password" class="form-control" placeholder="Password">
+                                    <p id="info"></p>
                                 </div>
                                 <button type="submit" id="loginBtn" class="btn btn-black">Login</button>
                                 <button type="submit" id="registerBtn" class="btn btn-secondary">Register</button>
@@ -65,8 +65,19 @@ class LoginPage {
                 </div>
             </div>
         `;
-    document.querySelector('#loginBtn').addEventListener('click', e => this.login(e));
-    document.querySelector('#registerBtn').addEventListener('click', async e => this.register(e));
+    document.querySelector('#registerBtn').addEventListener('click', async e => {
+      e.preventDefault();
+      window.location.hash = '#/register';
+    });
+
+    function notValid() {
+      const fields = ['email', 'pass'];
+      fields.forEach(field => {
+        let classes = document.querySelector(`#${field}`).classList;
+        if (!classes.contains("notvalid")) classes.toggle("notvalid");
+      });
+      document.querySelector(`#info`).innerHTML = 'Invalid email or password';
+    }
   }
 }
 

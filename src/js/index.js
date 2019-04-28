@@ -3,6 +3,7 @@ import '@babel/polyfill';
 import 'bootstrap';
 import App from './App';
 import LoginPage from './LoginPage';
+import RegisterPage from './RegisterPage';
 import router from './router';
 
 const user = JSON.parse(localStorage.getItem('user'));
@@ -10,6 +11,7 @@ const user = JSON.parse(localStorage.getItem('user'));
 const routes = {
   '/': user ? App : LoginPage,
   '/lists': App,
+  '/register': RegisterPage
 };
 
 const onload = () => {

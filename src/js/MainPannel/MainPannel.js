@@ -76,7 +76,7 @@ class MainPannel {
     element.innerHTML = `
         <div id='MainPannel'>
           <div class='header'>
-            <h1>Project title</h1>
+            <h1></h1>
           </div>
           <div class='lists'>
 

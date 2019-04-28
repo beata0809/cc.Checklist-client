@@ -17,16 +17,29 @@ class List {
 
   // render pojedynczej listy
   static render(data) {
+    const titleNoSpaces = data.titleNoSpaces;
     const element = document.createElement('div');
     element.className = 'list';
     element.innerHTML = `
         <h2>${data.title}</h2>
           <div class='tasks'>
           </div>
-        <button type="button" class="btn btn-outline-dark">
-          Dodaj
-        </button>
-        <input type="textarea">
+
+          <form id="${titleNoSpaces}-form">
+            <div class="input-group mb-3 addList">
+              <input
+                id="${titleNoSpaces}-input"
+                type="text"
+                class="form-control"
+                placeholder="Dodaj nowe zadanie"
+                aria-label="Dodaj nowe zadanie"
+                aria-describedby="basic-addon2"
+              >
+
+              <div class="input-group-append">
+                <button id="${titleNoSpaces}-btn" class="btn btn-outline-dark" type="button">Dodaj</button>
+              </div>
+          </form>
         `;
 
     // Trzeba dodac taski do div'a .tasks
@@ -68,7 +81,14 @@ class List {
 
 
     element.querySelector('button').addEventListener('click', () => {
-      element.querySelector('[type=textarea]').style.display = 'initial';
+      // utworzenie nowego taska
+      const task = document.createElement('input');
+      task.setAttribute=('type', 'checkbox');
+      // TODO
+      // pobranie tekstu z inputa
+      // dolaczenie go do listy
+      // dolaczenie go do bazy
+
     })
     document.querySelector('.lists').appendChild(element);
   }

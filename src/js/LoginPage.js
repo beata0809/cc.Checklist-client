@@ -44,7 +44,7 @@ class LoginPage {
                                     <input type="password" class="form-control" placeholder="Password">
                                 </div>
                                 <button type="submit" id="loginBtn" class="btn btn-black">Login</button>
-                                <button type="submit" class="btn btn-secondary">Register</button>
+                                <button type="submit" id="registerBtn" class="btn btn-secondary">Register</button>
                             </form>
                         </div>
 
@@ -52,6 +52,25 @@ class LoginPage {
             </div>
         `;
     document.querySelector('#loginBtn').addEventListener('click', e => this.login(e));
+
+    document.querySelector('#registerBtn').addEventListener('click', async e => {
+      e.preventDefault();
+      console.log(1)
+      const registerData = {
+        email: document.querySelector('input[type=text]').value,
+        password: document.querySelector('input[type=password]').value,
+      };
+      //console.log(registerData);
+      const account = await Api.createUser(registerData)
+      console.log(account)
+      if (account.status == 400){
+        window.alert(account.data)
+      } else {
+        document.querySelector('input[type=text]').value = null;
+        document.querySelector('input[type=password]').value = null;
+        window.alert('Account created. Now you can log in.');
+      }
+    });
   }
 }
 

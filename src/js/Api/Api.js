@@ -36,6 +36,24 @@ class Api {
       console.log(ex);
     }
   }
+
+  static async updateTask(status, id) {
+    try {
+      const { data } = await checklist.put(`/tasks/${id}`, status);
+      console.log(data);
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
+
+  static async addTask(taskData) {
+    try {
+      const { data } = await checklist.post('/tasks', taskData);
+      return data;
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
 }
 
 export default Api;

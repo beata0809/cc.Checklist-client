@@ -19,7 +19,7 @@
 
   .lists {
     width: 100%;
-    background-color: rgba(240, 240, 240, 0.3);
+    background-color: #fff;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -56,5 +56,14 @@
 
   .form-control {
     margin: 0;
+  }
+
+  .defaultScreen {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(200, 200, 200, 0.5);
   }
 }

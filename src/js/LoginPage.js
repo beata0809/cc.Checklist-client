@@ -36,10 +36,6 @@ class LoginPage {
   }
 
   static render() {
-    document.body.style.backgroundImage = `url(./src/img/background.jpg)`;
-    document.body.style.backgroundSize = 'cover';
-    document.body.style.backgroundRepeat = 'no-repeat';
-
     document.querySelector('#root').innerHTML = `
             <div id="LoginPage">
                 <div class="sidenav">

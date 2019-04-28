@@ -21,7 +21,10 @@ class MainPannel {
             <h1></h1>
           </div>
           <div class='lists'>
-
+            <div class="defaultScreen">
+            <i style="font-size: 250px; color: rgba(200, 200, 200, 0.5)" class="fas fa-list"></i>
+            <h1>Wybierz projekt</h1>
+            </div>
           </div>
         </div>
         `;

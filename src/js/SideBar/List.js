@@ -1,4 +1,5 @@
 import Api from '../Api/Api';
+import MainPannel from '../MainPannel/MainPannel';
 
 class List {
   static renderLists(data) {
@@ -34,6 +35,8 @@ class List {
     userData.projects[index] = projectData;
     localStorage.setItem('user', JSON.stringify(userData));
     document.querySelector(`#${projectTitle.replace(/\s/g, '')}-form`).reset();
+
+    MainPannel.getLists(userData.projects[index].title)
   }
 
   static render(listName, projectTitle) {
